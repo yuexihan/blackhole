@@ -50,7 +50,7 @@ void main() {
 	
 	vec3 bh = vec3(0.0,0.0,0.0);
 	// vec3 bh = vec3(center * 2.0, 0.0);
-	float bhr = 0.1;
+	float bhr = 0.05;
 	float bhmass = 5.0;
 	bhmass *= 0.001; // premul G
 	
@@ -81,7 +81,7 @@ void main() {
 		// Texture for the accretion disc
 		float dr = length(bhv.xz);
 		float da = atan(bhv.z,bhv.x);
-		vec2 ra = vec2(dr,da * (0.01 + (dr - bhr)*0.002) + 2.0 * pi + iGlobalTime*0.005 );
+		vec2 ra = vec2(dr,da * (0.01 + (dr - bhr)*0.002) + 2.0 * pi + iGlobalTime*0.00001 );
 		ra *= vec2(10.0,20.0);
 		
 		vec3 dcol = mix(c2,c1,pow(length(bhv)-bhr,2.0)) * max(0.0,texture2D(disc,ra*vec2(0.1,0.5)).r+0.05) * (4.0 / ((0.001+(length(bhv) - bhr)*50.0) ));
